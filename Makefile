@@ -12,7 +12,7 @@ OBJSV = $(SRC_SERVER:.c=.o)
 OBJCT = $(SRC_CLIENT:.c=.o)
 
 all: $(SERVER) $(CLIENT)
-	
+
 $(SERVER) :
 	$(CC) $(CFLAGS) $(SRC_SERVER) -o $(SERVER)
 
@@ -22,6 +22,11 @@ $(CLIENT) :
 clean:
 	rm -f $(OBJSV)
 	rm -f $(OBJCT)
+	$(MAKE) -C $(LIBFT_DIR) clean
+
 fclean: clean
 	rm -f $(CLIENT)
 	rm -f $(SERVER)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+
+re: fclean all
