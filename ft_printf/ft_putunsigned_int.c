@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putunsigned_int.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 09:40:53 by aaferyad          #+#    #+#             */
-/*   Updated: 2025/02/10 10:06:16 by ybounite         ###   ########.fr       */
+/*   Created: 2024/11/16 17:49:04 by ybounite          #+#    #+#             */
+/*   Updated: 2024/11/16 18:20:51 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#include "minitalk.h"
-
-int	main()
+int	ft_putunsigned(unsigned long n)
 {
-	int (pid);
-	pid = getpid();
-	printf("the process ID id %d\n", pid);
-	while (1)
-	{}
-	return (0);
+	int	res;
+
+	res = 0;
+	if (n >= 10)
+		res += ft_putunsigned(n / 10);
+	res += ft_putchar(n % 10 + '0');
+	return (res);
 }

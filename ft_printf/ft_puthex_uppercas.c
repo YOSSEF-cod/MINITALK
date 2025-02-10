@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_puthex_uppercas.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 09:40:53 by aaferyad          #+#    #+#             */
-/*   Updated: 2025/02/10 10:06:16 by ybounite         ###   ########.fr       */
+/*   Created: 2024/11/16 17:16:44 by ybounite          #+#    #+#             */
+/*   Updated: 2024/11/16 17:16:57 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#include "minitalk.h"
-
-int	main()
+int	ft_puthex_uppercase(unsigned int n)
 {
-	int (pid);
-	pid = getpid();
-	printf("the process ID id %d\n", pid);
-	while (1)
-	{}
-	return (0);
+	char	*hex;
+	int		res;
+
+	hex = "0123456789ABCDEF";
+	res = 0;
+	if (n >= 16)
+		res += ft_puthex_uppercase(n / 16);
+	res += ft_putchar(hex[n % 16]);
+	return (res);
 }

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putadderss.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 09:40:53 by aaferyad          #+#    #+#             */
-/*   Updated: 2025/02/10 10:06:16 by ybounite         ###   ########.fr       */
+/*   Created: 2024/11/16 17:53:56 by ybounite          #+#    #+#             */
+/*   Updated: 2024/11/16 17:53:57 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_printf.h"
 
-int	main()
+int	ft_printaddress(unsigned long adres)
 {
-	int (pid);
-	pid = getpid();
-	printf("the process ID id %d\n", pid);
-	while (1)
-	{}
-	return (0);
+	int	i;
+
+	i = 0;
+	i += ft_putstr("0x");
+	if (adres == 0)
+		i += ft_putchar('0');
+	else
+		i += ft_puthex_lowercase(adres);
+	return (i);
 }

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_puthex_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 09:40:53 by aaferyad          #+#    #+#             */
-/*   Updated: 2025/02/10 10:06:16 by ybounite         ###   ########.fr       */
+/*   Created: 2024/11/16 17:15:39 by ybounite          #+#    #+#             */
+/*   Updated: 2024/11/16 17:57:00 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#include "minitalk.h"
-
-int	main()
+int	ft_puthex_lowercase(unsigned long n)
 {
-	int (pid);
-	pid = getpid();
-	printf("the process ID id %d\n", pid);
-	while (1)
-	{}
-	return (0);
+	char	*hex;
+	int		res;
+
+	hex = "0123456789abcdef";
+	res = 0;
+	if (n >= 16)
+		res += ft_puthex_lowercase(n / 16);
+	res += ft_putchar(hex[n % 16]);
+	return (res);
 }
