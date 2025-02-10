@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 16:13:38 by ybounite          #+#    #+#             */
-/*   Updated: 2025/02/09 17:53:55 by ybounite         ###   ########.fr       */
+/*   Created: 2025/02/10 09:40:53 by aaferyad          #+#    #+#             */
+/*   Updated: 2025/02/10 09:42:46 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int main(void)
+
+int	main()
 {
-  int pid;
-
-  pid = getpid();
-  printf("The process ID is %d\n", pid);
-
-  return 0;
+	int (pid);
+	pid = getpid();
+	printf("the process ID id %d\n", pid);
+	return (0);
 }
+

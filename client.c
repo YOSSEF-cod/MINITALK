@@ -5,19 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:28:10 by ybounite          #+#    #+#             */
-/*   Updated: 2025/02/09 17:53:51 by ybounite         ###   ########.fr       */
+/*   Created: 2025/02/10 09:35:58 by aaferyad          #+#    #+#             */
+/*   Updated: 2025/02/10 09:39:11 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int main(void)
+int	main(int ac, char **arv)
 {
-  int pid;
-
-  pid = getpid();
-  printf("The process ID is %d\n", pid);
-
-  return 0;
+	if (ac != 2)
+		return (ft_putendl_fd("Error", 2), 1);
+	check_pid();
 }
