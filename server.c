@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 09:40:53 by aaferyad          #+#    #+#             */
-/*   Updated: 2025/02/11 16:33:18 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:47:04 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void	action(int sig)
 {
-	static unsigned char	buff = 0;
-	static int				i = 0;
+	static unsigned char	buffer;
+	static int				i;
 
-	buff = (buff << 1) | (sig == SIGUSR1);
+	i = 0;
+	buffer = 0;
+	buffer = (buffer << 1) | (sig == SIGUSR1);
 	i++;
 	if (i == 8)
 	{
-		write(1, &buff, 1);
+		write(1, &buffer, 1);
 		i = 0;
-		buff = 0;
+		buffer = 0;
 	}
 }
 
