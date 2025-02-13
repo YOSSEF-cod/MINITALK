@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 09:35:58 by aaferyad          #+#    #+#             */
-/*   Updated: 2025/02/11 16:43:38 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:59:51 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ int	main(int ac, char **av)
 	char	*messag;
 	int		i;
 
+
 	if (ac != 3)
-		return (ft_putendl_fd("Error\nyou enter arguments as follow: ./client <PID> <MESSAGE>", 2), 1);
+		return (ft_printf("%sError\n%s./client <PID> <MESSAGE>", RED, WHITE), 1);
 	pid = ft_atoi(av[1]);
-	if (pid == -1)
-		return (ft_putendl_fd("Error", 2), 1);
-	i = 0;
+	if (pid == -1 || pid == 0)
+		return (ft_printf("%sError", RED), 1);
 	messag = av[2];
+	i = 0;
 	while (messag[i])
 	{
 		send_char(pid, (unsigned char)messag[i]);
