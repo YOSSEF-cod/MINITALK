@@ -40,3 +40,4 @@ fclean: clean
 	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
+
