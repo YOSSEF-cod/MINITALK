@@ -1,43 +1,36 @@
 CLIENT = client
-SERVER = server
-CFLAGS = -Wall -Wextra -Werror
+SERVER = serves
+CFLAGS = -Wall -Wextra -Werror 
 CC = cc
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
+
 FT_PRINTF_DIR = ft_printf
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 
 SRC_SERVER = server.c
-SRC_CLIENT = client.c
+SRC_CLIENT = client.c ft_atoi.c
 
-OBJSV = $(SRC_SERVER:.c=.o)
-OBJCT = $(SRC_CLIENT:.c=.o)
+OBJSRV = $(SRC_SERVER:.c=.o)
+OBJCLT = $(SRC_CLIENT:.c=.o)
 
-all : $(SERVER) $(CLIENT) $(LIBFT)
+all: $(SERVER) $(CLIENT) $(FT_PRINTF)
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+$(FT_PRINTF): 
+	@$(MAKE) -C $(FT_PRINTF_DIR)
 
-$(FT_PRINTF):
-	$(MAKE) -C $(FT_PRINTF_DIR)
+$(CLIENT): $(OBJCLT) $(FT_PRINTF)
+	$(CC) $(CFLAGS) $(OBJCLT) $(FT_PRINTF) -o $(CLIENT)
 
-$(SERVER) : $(OBJSV) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(OBJSV) $(LIBFT) $(FT_PRINTF) -o $(SERVER)
-
-$(CLIENT) : $(OBJCT) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(OBJCT) $(LIBFT) $(FT_PRINTF) -o $(CLIENT)
+$(SERVER): $(OBJSRV) $(FT_PRINTF)
+	$(CC) $(CFLAGS) $(OBJSRV) $(FT_PRINTF) -o $(SERVER)
 
 clean:
-	rm -f $(OBJSV)
-	rm -f $(OBJCT)
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(FT_PRINTF_DIR) clean
+	rm -f $(OBJCLT)
+	rm -f $(OBJSRV)
+	@$(MAKE) -C $(FT_PRINTF_DIR) clean
 
 fclean: clean
 	rm -f $(CLIENT)
 	rm -f $(SERVER)
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(FT_PRINTF_DIR) fclean
+	@$(MAKE) -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
-
