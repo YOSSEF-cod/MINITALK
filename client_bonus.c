@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 15:50:12 by ybounite          #+#    #+#             */
-/*   Updated: 2025/02/17 16:14:51 by ybounite         ###   ########.fr       */
+/*   Created: 2025/02/15 08:58:46 by ybounite          #+#    #+#             */
+/*   Updated: 2025/02/17 16:14:36 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,19 @@ void	ft_send_string(pid_t pid, char *str)
 	ft_send_char(pid, '\0');
 }
 
+void	hndl_signal(int sig)
+{
+	if (sig == SIGUSR1)
+		ft_printf("\n%s[ == the message has been received == ]\n\n", BLUE);
+}
+
 int	main(int ac, char **av)
 {
 	pid_t (pid);
 	if (ac != 3)
 		return (ft_printf("Usage:%s%s <PID> <Message>\n", RED, av[0]), 1);
 	pid = ft_atoi(av[1]);
+	signal(SIGUSR1, hndl_signal);
 	if (pid <= 0)
 		return (ft_printf("%sInvalid PID\n", RED), 1);
 	ft_send_string(pid, av[2]);

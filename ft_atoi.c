@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:58:40 by ybounite          #+#    #+#             */
-/*   Updated: 2025/02/15 08:58:14 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:53:40 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int	ft_atoi(const char *str)
 			return (-sun * (sun == 1));
 		i++;
 	}
+	if (str[i] != '\0')
+		return (-1);
 	return ((int)nbr * sun);
 }

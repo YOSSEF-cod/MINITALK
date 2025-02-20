@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 15:49:31 by ybounite          #+#    #+#             */
-/*   Updated: 2025/02/18 09:54:08 by ybounite         ###   ########.fr       */
+/*   Created: 2025/02/15 08:58:54 by ybounite          #+#    #+#             */
+/*   Updated: 2025/02/17 15:36:18 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ void	write_message(char c, int *bit)
 {
 	*bit = 0;
 	write(1, &c, 1);
+	if (c == '\0')
+	{
+		write(1, "\n", 1);
+		if (kill(g_client, SIGUSR1) == -1)
+		{
+			ft_printf("%sError sending signal", RED);
+			exit(1);
+		}
+	}
 }
 
 void	handler_signal(int sigum, siginfo_t *siginfo, void *walo)
@@ -67,7 +76,6 @@ int	main(int ac, char **av)
 		|| sigaction(SIGUSR2, &sa, NULL) == -1)
 		return (1);
 	while (1)
-	{
-	}
+		pause();
 	return (0);
 }
